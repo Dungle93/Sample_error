@@ -2,10 +2,6 @@ import boto3
 import pandas as pd
 
 def process_data(bucket, key):
-  '''
-  This function works as follows:
-  Read file from S3 -> filter data: amount /1000 -> write back to S3
-  '''
     s3 = boto3.client('s3')
     obj = s3.get_object(Bucket=bucket, Key=key)
     df = pd.read_csv(obj['Body'])
